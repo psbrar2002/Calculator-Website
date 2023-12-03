@@ -1,44 +1,48 @@
 let display = document.getElementById('display');
-let currentInput = '';
-let operator = '';
+    let currentInput = '';
 
-function appendToDisplay(value) {
-  currentInput += value;
-  display.value = currentInput;
-}
+    function appendToDisplay(value) {
+      currentInput += value;
+      display.value = currentInput;
+    }
 
-function setOperator(op) {
-  operator = op;
-  currentInput += ' ' + op + ' ';
-  display.value = currentInput;
-}
+    function setOperator(op) {
+      currentInput += ' ' + op + ' ';
+      display.value = currentInput;
+    }
 
-function clearDisplay() {
-  currentInput = '';
-  operator = '';
-  display.value = '';
-}
+    function clearDisplay() {
+      currentInput = '';
+      display.value = '';
+    }
 
-function calculate() {
-  const expression = currentInput.split(' ');
-  const num1 = parseFloat(expression[0]);
-  const num2 = parseFloat(expression[2]);
-  switch (expression[1]) {
-    case '+':
-      display.value = num1 + num2;
-      break;
-    case '-':
-      display.value = num1 - num2;
-      break;
-    case '*':
-      display.value = num1 * num2;
-      break;
-    case '/':
-      display.value = num1 / num2;
-      break;
-    default:
-      display.value = 'Error';
-  }
-  currentInput = display.value;
-  operator = '';
-}
+    function calculate() {
+      const expression = currentInput.split(' ');
+      let result = parseFloat(expression[0]);
+
+      for (let i = 1; i < expression.length; i += 2) {
+        const operator = expression[i];
+        const operand = parseFloat(expression[i + 1]);
+
+        switch (operator) {
+          case '+':
+            result += operand;
+            break;
+          case '-':
+            result -= operand;
+            break;
+          case '*':
+            result *= operand;
+            break;
+          case '/':
+            result /= operand;
+            break;
+          default:
+            display.value = 'Error';
+            return;
+        }
+      }
+
+      display.value = result;
+      currentInput = result.toString();
+    }
