@@ -25,10 +25,13 @@
       color: #ecf0f1;
       padding: 20px;
       position: relative;
+      margin: 0 auto;
+      /* Center the calculator horizontally */
     }
 
     input {
-      width: 100%;
+      width: calc(100% - 20px);
+      /* Adjusted width to account for padding */
       margin: 10px 0;
       padding: 10px;
       font-size: 20px;
@@ -180,7 +183,6 @@
         display.value = 'Error';
       }
     }
-
 
     function clearDisplay() {
       currentInput = '';
