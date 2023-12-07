@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google-like Calculator</title>
+  <title>Advanced Calculator</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -154,37 +154,13 @@
     }
 
     function calculate() {
-      const expression = currentInput.split(' ');
-      let result = parseFloat(expression[0]);
-
-      for (let i = 1; i < expression.length; i += 2) {
-        const operator = expression[i];
-        const operand = parseFloat(expression[i + 1]);
-
-        switch (operator) {
-          case '+':
-            result += operand;
-            break;
-          case '-':
-            result -= operand;
-            break;
-          case '*':
-            result *= operand;
-            break;
-          case '/':
-            result /= operand;
-            break;
-          case '%':
-            result = result * operand / 100;
-            break;
-          default:
-            display.value = 'Error';
-            return;
-        }
+      try {
+        const result = eval(currentInput);
+        display.value = result;
+        currentInput = result.toString();
+      } catch (error) {
+        display.value = 'Error';
       }
-
-      display.value = result;
-      currentInput = result.toString();
     }
   </script>
 </body>
