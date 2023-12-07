@@ -1,9 +1,9 @@
 # Calculator-Website
 
 **Possible** feautures to add:
-- [ ] Add paranthese function
-- [ ] Implement float parameter (decimals)
-- [ ] Wider calculator
+- [x] Add paranthese function
+- [x] Implement float parameter (decimals)
+- [x] Wider calculator
 
 Prabhdeep Brar
 Jonathan Nguyen
