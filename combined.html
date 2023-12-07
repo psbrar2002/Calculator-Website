@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Calculator</title>
+  <title>Stylish Calculator</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      background-color: #34495e;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,7 +21,6 @@
       border-radius: 15px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       width: 340px;
-      /* Adjusted width for better balance */
       text-align: center;
       color: #ecf0f1;
       padding: 20px;
@@ -34,10 +33,10 @@
       padding: 10px;
       font-size: 20px;
       border: none;
-      border-bottom: 2px solid #34495e;
+      border-bottom: 2px solid #2c3e50;
       outline: none;
       text-align: right;
-      background-color: #2c3e50;
+      background-color: #34495e;
       color: #ecf0f1;
       border-radius: 5px;
     }
@@ -67,7 +66,6 @@
       border: none;
       border-radius: 10px;
       background-color: #3498db;
-      /* Blue color for consistency */
       color: #ecf0f1;
     }
 
@@ -81,7 +79,6 @@
       justify-content: space-between;
     }
 
-    /* Adjusted styles for the top right corner "C" button */
     #clear {
       width: 75px;
       height: 75px;
@@ -89,12 +86,12 @@
       cursor: pointer;
       border: none;
       border-radius: 10px;
-      background-color: #3498db;
+      background-color: #e74c3c;
       color: #ecf0f1;
     }
 
     #clear:hover {
-      background-color: #2980b9;
+      background-color: #c0392b;
     }
   </style>
 </head>
@@ -105,7 +102,7 @@
     <div class="button-row">
       <button id="parenthesis" onclick="appendToDisplay('(')">(</button>
       <button id="parenthesis" onclick="appendToDisplay(')')">)</button>
-      <button id="percent" onclick="appendToDisplay('%')">%</button>
+      <button id="percent" onclick="applyPercent()">%</button>
       <button id="clear" onclick="clearDisplay()">C</button>
     </div>
     <div class="button-row">
@@ -147,6 +144,43 @@
       currentInput += ' ' + op + ' ';
       display.value = currentInput;
     }
+
+    function applyPercent() {
+      try {
+        const expression = currentInput.split(' ');
+        let result = parseFloat(expression[0]);
+
+        for (let i = 1; i < expression.length; i += 2) {
+          const operator = expression[i];
+          const operand = parseFloat(expression[i + 1]);
+
+          if (operator === '*' || operator === '/') {
+            // If the operator is '*' or '/', apply percentage correctly
+            const percentValue = operand / 100;
+            result = operator === '*' ? result * percentValue : result / percentValue;
+          } else {
+            // For other operators, perform regular calculations
+            switch (operator) {
+              case '+':
+                result += operand;
+                break;
+              case '-':
+                result -= operand;
+                break;
+              default:
+                display.value = 'Error';
+                return;
+            }
+          }
+        }
+
+        display.value = result;
+        currentInput = result.toString();
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+
 
     function clearDisplay() {
       currentInput = '';
