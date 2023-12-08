@@ -2,6 +2,14 @@ let display = document.getElementById('display');
 let currentInput = '';
 
 function appendToDisplay(value) {
+  if (value === '(' && currentInput !== '') {
+    // Handle implicit multiplication for expressions like 9(2)
+    const lastChar = currentInput.slice(-1);
+    if (!isNaN(lastChar) || lastChar === ')') {
+      currentInput += ' * ';
+    }
+  }
+
   currentInput += value;
   display.value = currentInput;
 }
@@ -61,7 +69,3 @@ function calculate() {
     display.value = 'Error';
   }
 }
-
-
-
-
