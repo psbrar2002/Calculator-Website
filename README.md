@@ -10,8 +10,8 @@ Feautures to add:
 
 Bugs to fix:
 - [x] Center the dispaly
+- [x] Add operands outside of parantheses. Ex: "9(2)" results in error, Expected "18"
 - [ ] Percentage button not displaying correctly
-- [ ] Add operands outside of parantheses. Ex: "9(2)" results in error, Expected "18"
 
 Github Repo:
 https://github.com/psbrar2002/Calculator-Website 
