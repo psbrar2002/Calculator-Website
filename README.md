@@ -11,6 +11,7 @@ Feautures to add:
 Bugs to fix:
 - [x] Center the dispaly
 - [ ] Percentage button not displaying correctly
+- [ ] Add operands outside of parantheses. Ex: "9(2)" results in error, Expected "18"
 
 Prabhdeep Brar, and 
 Jonathan Nguyen
