@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator</title>
+  <title>Stylish Calculator</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -139,6 +139,14 @@
     let currentInput = '';
 
     function appendToDisplay(value) {
+      if (value === '(' && currentInput !== '') {
+        // Handle implicit multiplication for expressions like 9(2)
+        const lastChar = currentInput.slice(-1);
+        if (!isNaN(lastChar) || lastChar === ')') {
+          currentInput += ' * ';
+        }
+      }
+
       currentInput += value;
       display.value = currentInput;
     }
