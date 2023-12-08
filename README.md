@@ -1,9 +1,16 @@
 # Calculator-Website
 
-**Possible** feautures to add:
+Feautures to add:
 - [x] Add paranthese function
 - [x] Implement float parameter (decimals)
 - [x] Wider calculator
+- [x] Percentage buttons
+- [x] Implement PEMDAS order of operations
+- [x] Add colors to 'C' and '=' buttons
 
-Prabhdeep Brar
+Bugs to fix:
+- [x] Center the dispaly
+- [ ] Percentage button not displaying correctly
+
+Prabhdeep Brar, and 
 Jonathan Nguyen
