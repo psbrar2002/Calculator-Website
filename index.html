@@ -10,6 +10,12 @@
 	<div id="calculator">
     <input type="text" id="display" disabled>
     <div class="button-row">
+      <button id="parenthesis" onclick="appendToDisplay('(')">(</button>
+      <button id="parenthesis" onclick="appendToDisplay(')')">)</button>
+      <button id="percent" onclick="applyPercent()">%</button>
+      <button id="clear" onclick="clearDisplay()">C</button>
+    </div>
+    <div class="button-row">
       <button onclick="appendToDisplay('7')">7</button>
       <button onclick="appendToDisplay('8')">8</button>
       <button onclick="appendToDisplay('9')">9</button>
@@ -29,7 +35,7 @@
     </div>
     <div class="button-row">
       <button onclick="appendToDisplay('0')">0</button>
-      <button onclick="clearDisplay()">C</button>
+      <button id="decimal" onclick="appendToDisplay('.')">.</button>
       <button id="equals" onclick="calculate()">=</button>
       <button onclick="setOperator('+')">+</button>
     </div>
